@@ -1,22 +1,20 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
-
 func isAnagram(s string, t string) bool {
+	runes := make([]int, 26)
 	for _, ss := range s {
-		if !strings.Contains(t, string(ss)) {
+		runes[int(ss-'a')]++
+	}
+
+	for _, tt := range t {
+		runes[int(tt)-'a']--
+	}
+
+	for _, r := range runes {
+		if r != 0 {
 			return false
 		}
-
-		t = strings.Replace(t, string(ss), "", 1)
-		fmt.Println(t)
 	}
 
-	if len(t) == 0 {
-		return true
-	}
-	return false
+	return true
 }
