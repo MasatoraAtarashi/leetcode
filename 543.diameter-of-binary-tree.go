@@ -1,38 +1,24 @@
 package main
 
-import "fmt"
-
-var max int
+import "math"
 
 func diameterOfBinaryTree(root *TreeNode) int {
-	max = 0 // leetcode上ではグローバル変数がテストケース間で共通ぽい
-	maxPath(root)
-	return max
-}
+	maxPath := 0
 
-func maxPath(root *TreeNode) {
-	if root == nil {
-		return
+	var calcHeight func(root *TreeNode) int
+	calcHeight = func(root *TreeNode) int {
+		if root == nil {
+			return 0
+		}
+
+		lh := calcHeight(root.Left)
+		rh := calcHeight(root.Right)
+		path := lh + rh
+		maxPath = int(math.Max(float64(maxPath), float64(path)))
+
+		return 1 + int(math.Max(float64(lh), float64(rh)))
 	}
 
-	lh := Height(root.Left)
-	rh := Height(root.Right)
-	fmt.Println(lh, rh)
-	if root.Left != nil {
-		lh++
-	}
-	if root.Right != nil {
-		rh++
-	}
-
-	path := lh + rh
-	fmt.Println("path", path)
-	if max < (int(path)) {
-		max = int(path)
-	}
-
-	maxPath(root.Left)
-	maxPath(root.Right)
-
-	fmt.Println("max", max)
+	calcHeight(root)
+	return maxPath
 }
