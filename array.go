@@ -1,4 +1,4 @@
-package pkg
+package main
 
 func IsAnagram(s string, t string) bool {
 	runes := make([]int, 26)
