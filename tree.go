@@ -1,5 +1,7 @@
 package main
 
+import "math"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -32,4 +34,26 @@ func IsSameTree(t1, t2 *TreeNode) bool {
 	}
 
 	return IsSameTree(t1.Left, t2.Left) && IsSameTree(t1.Right, t2.Right)
+}
+
+func Height(tree *TreeNode) float64 {
+	if tree == nil {
+		return 0
+	}
+
+	if tree.Left == nil && tree.Right == nil {
+		return 0
+	}
+
+	lh := Height(tree.Left)
+	rh := Height(tree.Right)
+
+	if tree.Left != nil {
+		lh++
+	}
+	if tree.Right != nil {
+		rh++
+	}
+
+	return math.Max(lh, rh)
 }
