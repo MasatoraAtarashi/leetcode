@@ -1,53 +1,29 @@
 package main
 
-import (
-	"strings"
-)
+import "unicode"
 
 func isPalindrome(s string) bool {
-	if len(s) == 0 {
-		return true
-	}
-
 	i := 0
 	j := len(s) - 1
-	for {
-		if i == j {
-			return true
-		}
-		if i > j {
-			return true
+	for i < j {
+		if unicode.ToLower(rune(s[i])) != unicode.ToLower(rune(s[j])) {
+			return false
 		}
 
-		for {
-			if i >= len(s) {
-				return true
-			}
-
-			if IsAlphanumeric(rune(s[i])) {
-				break
-			} else {
-				i++
-			}
+		for i < j && !IsAlphanumeric(rune(s[i])) {
+			i++
 		}
 
-		for {
-			if j < 0 {
-				return true
-			}
-
-			if IsAlphanumeric(rune(s[j])) {
-				break
-			} else {
-				j--
-			}
+		for i < j && !IsAlphanumeric(rune(s[j])) {
+			j--
 		}
 
-		if !strings.EqualFold(string(s[i]), string(s[j])) {
+		if unicode.ToLower(rune(s[i])) != unicode.ToLower(rune(s[j])) {
 			return false
 		}
 
 		i++
 		j--
 	}
+	return true
 }
