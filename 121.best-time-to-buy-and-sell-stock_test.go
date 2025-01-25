@@ -25,6 +25,13 @@ func Test_maxProfit(t *testing.T) {
 			},
 			want: 0,
 		},
+		{
+			name: "test3",
+			args: args{
+				prices: []int{1, 2},
+			},
+			want: 1,
+		},
 	}
 	for _, tt := range tests {
 		if got := maxProfit(tt.args.prices); got != tt.want {
