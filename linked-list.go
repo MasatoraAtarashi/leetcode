@@ -7,6 +7,27 @@ type ListNode struct {
 	Next *ListNode
 }
 
+func Append(l *ListNode, val int) *ListNode {
+	if l == nil {
+		return &ListNode{
+			Val:  val,
+			Next: nil,
+		}
+	}
+
+	base := l
+	current := l
+	for current.Next != nil {
+		current = current.Next
+	}
+	current.Next = &ListNode{
+		Val:  val,
+		Next: nil,
+	}
+
+	return base
+}
+
 func (l *ListNode) Display() {
 	n := l
 	for n != nil {
@@ -17,27 +38,6 @@ func (l *ListNode) Display() {
 
 type LinkedList struct {
 	head *ListNode
-}
-
-func (l *LinkedList) Append(value int) {
-	if l.head == nil {
-		l.head = &ListNode{
-			Val:  value,
-			Next: nil,
-		}
-		return
-	}
-
-	current := l.head
-	for current.Next != nil {
-		current = current.Next
-	}
-
-	current.Next = &ListNode{
-		Val:  value,
-		Next: nil,
-	}
-	return
 }
 
 // Prepend
