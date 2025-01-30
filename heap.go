@@ -43,19 +43,25 @@ func (m *MinHeap) IsEmpty() bool {
 }
 
 func (m *MinHeap) heapifyUp(idx int) {
-	parent := (idx - 1) / 2
-	for idx > 0 && m.data[parent] > m.data[idx] {
+	for idx > 0 {
+		parent := (idx - 1) / 2
+		if m.data[parent] <= m.data[idx] {
+			break
+		}
 		m.swap(parent, idx)
 		idx = parent
-		m.heapifyUp(idx)
 	}
 }
 
 func (m *MinHeap) heapifyDown(idx int) {
-	leftChild := 2*idx + 1
-	for leftChild < len(m.data) {
-		smallest := leftChild
+	for {
+		leftChild := 2*idx + 1
 		rightChild := leftChild + 1
+		if leftChild >= len(m.data) {
+			break
+		}
+
+		smallest := leftChild
 		if rightChild < len(m.data) && m.data[rightChild] < m.data[smallest] {
 			smallest = rightChild
 		}

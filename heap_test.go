@@ -69,4 +69,68 @@ func TestMinHeap(t *testing.T) {
 			t.Errorf("Heap should be empty after popping all elements")
 		}
 	})
+
+	t.Run("Simulate KthLargest operations", func(t *testing.T) {
+		h := &MinHeap{}
+
+		fmt.Println("push 4")
+		h.Push(4)
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("push 5")
+		h.Push(5)
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("push 8")
+		h.Push(8)
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("push 2")
+		h.Push(2)
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("pop")
+		h.Pop()
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("push 3")
+		h.Push(3)
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("pop")
+		h.Pop()
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("push 5")
+		h.Push(5)
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("pop")
+		h.Pop()
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("push 10")
+		h.Push(10)
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("pop")
+		h.Pop()
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("push 9")
+		h.Push(9)
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("pop")
+		h.Pop()
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("push 4")
+		h.Push(4)
+		fmt.Println("Heap:", h.data)
+
+		fmt.Println("pop")
+		h.Pop()
+		fmt.Println("Heap:", h.data)
+	})
 }

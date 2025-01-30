@@ -5,9 +5,9 @@ type MinStack struct {
 	min  Stack[int]
 }
 
-func Constructor() MinStack {
-	return MinStack{}
-}
+// func Constructor() MinStack {
+// 	return MinStack{}
+// }
 
 func (this *MinStack) Push(val int) {
 	this.main.Push(val)
