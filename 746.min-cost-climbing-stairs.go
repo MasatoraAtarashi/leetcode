@@ -15,6 +15,6 @@ func minCostClimbingStairs(cost []int) int {
 	return costsToClime[len(cost)]
 }
 
-func main() {
-	minCostClimbingStairs([]int{10, 15, 20})
-}
+// func main() {
+// 	minCostClimbingStairs([]int{10, 15, 20})
+// }
