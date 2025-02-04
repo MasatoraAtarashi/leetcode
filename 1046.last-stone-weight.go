@@ -1,7 +1,5 @@
 package main
 
-import "math"
-
 func lastStoneWeight(stones []int) int {
 	mh := MaxHeap{}
 	for _, stone := range stones {

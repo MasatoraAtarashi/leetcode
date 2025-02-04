@@ -1,22 +1,29 @@
 package main
 
+import "sort"
+
 func groupAnagrams(strs []string) [][]string {
-	resultss := [][]string{{strs[0]}}
-
-	for i := 1; i < len(strs); i++ {
-		anagram := false
-		for j := range resultss {
-			if IsAnagram(strs[i], resultss[j][0]) {
-				resultss[j] = append(resultss[j], strs[i])
-				anagram = true
-				continue
-			}
-		}
-
-		if !anagram {
-			resultss = append(resultss, []string{strs[i]})
+	m := make(map[string][]string)
+	for _, str := range strs {
+		rs := []rune(str)
+		sort.Slice(rs, func(i, j int) bool {
+			return rs[i] < rs[j]
+		})
+		if _, ok := m[string(rs)]; ok {
+			m[string(rs)] = append(m[string(rs)], str)
+		} else {
+			m[string(rs)] = []string{str}
 		}
 	}
 
-	return resultss
+	result := make([][]string, len(m))
+	idx := 0
+	for _, v := range m {
+		for _, s := range v {
+			result[idx] = append(result[idx], s)
+		}
+		idx++
+	}
+
+	return result
 }
