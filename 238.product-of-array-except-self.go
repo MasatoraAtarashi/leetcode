@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func productExceptSelf(nums []int) []int {
 	leftMulti := make([]int, len(nums))
 	for i := range nums {
