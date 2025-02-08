@@ -215,3 +215,121 @@ func TestReverse(t *testing.T) {
 		})
 	}
 }
+
+// Lengthのテスト
+func TestLength(t *testing.T) {
+	tests := []struct {
+		name     string
+		initial  []int
+		expected int
+	}{
+		{
+			name:     "空のリスト",
+			initial:  []int{},
+			expected: 0,
+		},
+		{
+			name:     "1要素のリスト",
+			initial:  []int{1},
+			expected: 1,
+		},
+		{
+			name:     "2要素のリスト",
+			initial:  []int{1, 2},
+			expected: 2,
+		},
+		{
+			name:     "複数要素のリスト",
+			initial:  []int{1, 2, 3, 4},
+			expected: 4,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// 初期リストの作成
+			var list *ListNode
+			for _, v := range tt.initial {
+				list = Append(list, v)
+			}
+
+			// 結果の検証
+			result := Length(list)
+			if result != tt.expected {
+				t.Errorf("got %v, want %v", result, tt.expected)
+			}
+		})
+	}
+}
+
+// Removeのテスト
+func TestRemove(t *testing.T) {
+	tests := []struct {
+		name     string
+		initial  []int
+		index    int
+		expected []int
+	}{
+		{
+			name:     "空のリストから削除",
+			initial:  []int{},
+			index:    0,
+			expected: []int{},
+		},
+		{
+			name:     "先頭の要素を削除",
+			initial:  []int{1, 2, 3},
+			index:    0,
+			expected: []int{2, 3},
+		},
+		{
+			name:     "中間の要素を削除",
+			initial:  []int{1, 2, 3},
+			index:    1,
+			expected: []int{1, 3},
+		},
+		{
+			name:     "最後の要素を削除",
+			initial:  []int{1, 2, 3},
+			index:    2,
+			expected: []int{1, 2},
+		},
+		{
+			name:     "1要素のリストから削除",
+			initial:  []int{1},
+			index:    0,
+			expected: []int{},
+		},
+		{
+			name:     "存在しないインデックスの削除（範囲外）",
+			initial:  []int{1, 2, 3},
+			index:    5,
+			expected: []int{1, 2, 3}, // 変更なし
+		},
+		{
+			name:     "負のインデックスの削除",
+			initial:  []int{1, 2, 3},
+			index:    -1,
+			expected: []int{1, 2, 3}, // 変更なし
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// 初期リストの作成
+			var list *ListNode
+			for _, v := range tt.initial {
+				list = Append(list, v)
+			}
+
+			// テスト対象の実行
+			list = Remove(list, tt.index)
+
+			// 結果の検証
+			result := getValues(list)
+			if !compareSlices(result, tt.expected) {
+				t.Errorf("got %v, want %v", result, tt.expected)
+			}
+		})
+	}
+}

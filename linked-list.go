@@ -97,15 +97,55 @@ func Reverse(l *ListNode) *ListNode {
 	next := l.Next
 
 	for current != nil {
-		// fmt.Printf("l: %s, prev: %s, current: %s, next: %s\n", l.String(), prev.String(), current.String(), next.String())
 		current.Next = prev
 		prev = current
 		current = next
-		// fmt.Printf("l: %s, prev: %s, current: %s, next: %s\n", l.String(), prev.String(), current.String(), next.String())
 		if current != nil {
 			next = current.Next
 		}
 	}
 
 	return prev
+}
+
+func Length(l *ListNode) int {
+	length := 0
+	current := l
+	for current != nil {
+		length++
+		current = current.Next
+	}
+
+	return length
+}
+
+func Remove(l *ListNode, index int) *ListNode {
+	if l == nil {
+		return nil
+	}
+	if index == 0 {
+		if l.Next == nil {
+			return nil
+		} else {
+			return &ListNode{
+				Val:  l.Next.Val,
+				Next: l.Next.Next,
+			}
+		}
+	}
+	if index > Length(l)-1 {
+		return l
+	}
+
+	prev := l
+	current := l.Next
+	next := current.Next
+	for i := 1; i < index; i++ {
+		prev = current
+		current = next
+		next = current.Next
+	}
+
+	prev.Next = next
+	return l
 }
