@@ -1,6 +1,6 @@
 package main
 
-func search(nums []int, target int) int {
+func _search(nums []int, target int) int {
 	left := 0
 	right := len(nums) - 1
 	for left <= right {
