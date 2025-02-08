@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func Test_search(t *testing.T) {
+func Test__search(t *testing.T) {
 	type args struct {
 		nums   []int
 		target int

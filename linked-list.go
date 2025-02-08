@@ -36,9 +36,6 @@ func (l *ListNode) Display() {
 	}
 }
 
-type LinkedList struct {
-	head *ListNode
-}
-
 // Prepend
 // delete
+// reverse
