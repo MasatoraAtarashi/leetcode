@@ -149,3 +149,5 @@ func Remove(l *ListNode, index int) *ListNode {
 	prev.Next = next
 	return l
 }
+
+// TODO: Pop-First, Get, Set, Insert
