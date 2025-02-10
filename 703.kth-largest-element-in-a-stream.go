@@ -5,7 +5,7 @@ type KthLargest struct {
 	k  int
 }
 
-func _Constructor(k int, nums []int) KthLargest {
+func __Constructor(k int, nums []int) KthLargest {
 	mh := MinHeap{}
 	for _, num := range nums {
 		mh.Push(num)

@@ -1,4 +1,3 @@
-
 package main
 
 func findDuplicate(nums []int) int {
@@ -17,6 +16,6 @@ func findDuplicate(nums []int) int {
 		rabbit = nums[rabbit]
 		turtle = nums[turtle]
 	}
-  
+
 	return rabbit
 }

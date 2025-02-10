@@ -9,7 +9,7 @@ type TsValue struct {
 	value     string
 }
 
-func Constructor() TimeMap {
+func _Constructor() TimeMap {
 	return TimeMap{
 		m: map[string][]TsValue{},
 	}

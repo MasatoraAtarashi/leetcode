@@ -13,17 +13,17 @@ func Test_findDuplicate(t *testing.T) {
 	}{
 		{
 			name: "Example 1",
-			args: args{nums: []int{1,3,4,2,2}},
+			args: args{nums: []int{1, 3, 4, 2, 2}},
 			want: 2,
 		},
 		{
 			name: "Example 2",
-			args: args{nums: []int{3,1,3,4,2}},
+			args: args{nums: []int{3, 1, 3, 4, 2}},
 			want: 3,
 		},
 		{
 			name: "Example 3",
-			args: args{nums: []int{3,3,3,3,3}},
+			args: args{nums: []int{3, 3, 3, 3, 3}},
 			want: 3,
 		},
 	}

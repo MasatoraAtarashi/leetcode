@@ -26,7 +26,7 @@ func Test_reorderList(t *testing.T) {
 						Next: &ListNode{
 							Val: 3,
 							Next: &ListNode{
-								Val: 4,
+								Val:  4,
 								Next: nil,
 							},
 						},
@@ -92,7 +92,7 @@ func Test_reorderList(t *testing.T) {
 				head: &ListNode{
 					Val: 1,
 					Next: &ListNode{
-						Val: 2,
+						Val:  2,
 						Next: nil,
 					},
 				},
@@ -100,7 +100,7 @@ func Test_reorderList(t *testing.T) {
 			want: &ListNode{
 				Val: 1,
 				Next: &ListNode{
-					Val: 2,
+					Val:  2,
 					Next: nil,
 				},
 			},
