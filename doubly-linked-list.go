@@ -65,9 +65,18 @@ func (d *DoublyLinkedList[T]) Prepend(val T) {
 }
 
 func (d *DoublyLinkedList[T]) Pop() T {
+	if d.Tail == nil {
+		var zero T
+		return zero
+	}
+
 	val := d.Tail.Val
 	d.Tail = d.Tail.Prev
-	d.Tail.Next = nil
+	if d.Tail != nil {
+		d.Tail.Next = nil
+	} else {
+		d.Head = d.Tail
+	}
 	d.length--
 	return val
 }

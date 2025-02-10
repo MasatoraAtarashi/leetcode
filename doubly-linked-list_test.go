@@ -62,19 +62,70 @@ func TestDoublyLinkedList(t *testing.T) {
 	})
 
 	t.Run("pop", func(t *testing.T) {
-		dll := &DoublyLinkedList[int]{}
-		dll.Append(1)
-		dll.Append(2)
-		Val := dll.Pop()
+		tests := []struct {
+			name       string
+			setup      []int
+			want       int
+			wantLength int
+			wantHead   *int
+			wantTail   *int
+		}{
+			{
+				name:       "empty list",
+				wantLength: 0,
+				wantHead:   nil,
+				wantTail:   nil,
+			},
+			{
+				name:       "single element",
+				setup:      []int{1},
+				want:       1,
+				wantLength: 0,
+				wantHead:   nil,
+				wantTail:   nil,
+			},
+			{
+				name:       "multiple elements",
+				setup:      []int{1, 2},
+				want:       2,
+				wantLength: 1,
+				wantHead:   intPtr(1),
+				wantTail:   intPtr(1),
+			},
+		}
 
-		if Val != 2 {
-			t.Errorf("expected popped Value 2, got %d", Val)
-		}
-		if dll.Length() != 1 {
-			t.Errorf("expected length 1, got %d", dll.Length())
-		}
-		if dll.Tail.Val != 1 {
-			t.Errorf("expected Tail Value 1, got %d", dll.Tail.Val)
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				dll := &DoublyLinkedList[int]{}
+				for _, v := range tt.setup {
+					dll.Append(v)
+				}
+				fmt.Printf("Before pop: %v\n", dll.String())
+
+				val := dll.Pop()
+				fmt.Printf("After pop: %v, popped: %v\n", dll.String(), val)
+
+				if val != tt.want {
+					t.Errorf("Pop() = %v, want %v", val, tt.want)
+				}
+				if dll.Length() != tt.wantLength {
+					t.Errorf("Length = %v, want %v", dll.Length(), tt.wantLength)
+				}
+				if tt.wantHead == nil {
+					if dll.Head != nil {
+						t.Error("Head should be nil")
+					}
+				} else if dll.Head.Val != *tt.wantHead {
+					t.Errorf("Head = %v, want %v", dll.Head.Val, *tt.wantHead)
+				}
+				if tt.wantTail == nil {
+					if dll.Tail != nil {
+						t.Error("Tail should be nil")
+					}
+				} else if dll.Tail.Val != *tt.wantTail {
+					t.Errorf("Tail = %v, want %v", dll.Tail.Val, *tt.wantTail)
+				}
+			})
 		}
 	})
 
@@ -157,4 +208,8 @@ func TestDoublyLinkedList(t *testing.T) {
 			})
 		}
 	})
+}
+
+func intPtr(i int) *int {
+	return &i
 }
