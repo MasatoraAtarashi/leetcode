@@ -4,11 +4,11 @@ func characterReplacement(s string, k int) int {
 	var start, end, max int
 	for end <= len(s)-1 {
 		maxFreq := 0
-		freqMap := make(map[string]int)
+		freq := make([]int, 26)
 		for i := start; i <= end; i++ {
-			freqMap[string(s[i])]++
-			if maxFreq < freqMap[string(s[i])] {
-				maxFreq = freqMap[string(s[i])]
+			freq[s[i]-'A']++
+			if maxFreq < freq[s[i]-'A'] {
+				maxFreq = freq[s[i]-'A']
 			}
 		}
 
