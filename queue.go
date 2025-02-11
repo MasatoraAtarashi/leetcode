@@ -20,7 +20,7 @@ func NewQueue[T comparable]() *Queue[T] {
 }
 
 func (q *Queue[T]) Enqueue(val T) {
-	if q.linkedList == nil {
+	if q.linkedList == nil || q.Length() == 0 {
 		n := &QueueNode[T]{
 			Val:  val,
 			Next: nil,
@@ -58,4 +58,11 @@ func (q *Queue[T]) Dequeue() *QueueNode[T] {
 	q.linkedList.length--
 
 	return n
+}
+
+func (q *Queue[T]) Length() int {
+	if q.linkedList == nil {
+		return 0
+	}
+	return q.linkedList.length
 }
