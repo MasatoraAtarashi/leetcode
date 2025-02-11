@@ -15,11 +15,14 @@ func (s *Stack[T]) Top() T {
 	return (*s)[len(*s)-1]
 }
 
-func (s *Stack[T]) Pop() {
+func (s *Stack[T]) Pop() T {
 	if len(*s) == 0 {
-		return
+		var zero T
+		return zero
 	}
+	last := (*s)[len(*s)-1]
 	*s = (*s)[:len(*s)-1]
+	return last
 }
 
 func (s *Stack[T]) Empty() bool {
