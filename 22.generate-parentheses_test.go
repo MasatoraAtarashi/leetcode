@@ -17,7 +17,7 @@ func Test_generateParenthesis(t *testing.T) {
 		{
 			name: "Example 1",
 			args: args{n: 3},
-			want: []string{"((()))","(()())","(())()","()(())","()()()"},
+			want: []string{"((()))", "(()())", "(())()", "()(())", "()()()"},
 		},
 		{
 			name: "Example 2",
