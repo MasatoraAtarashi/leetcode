@@ -12,7 +12,7 @@ type LRUCache struct {
 	capacity int
 }
 
-func Constructor(capacity int) LRUCache {
+func ___Constructor(capacity int) LRUCache {
 	return LRUCache{
 		valMap:   make(map[int]int),
 		lruList:  DoublyLinkedList[int]{},

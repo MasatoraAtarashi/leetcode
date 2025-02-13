@@ -17,7 +17,7 @@ func TestConstructor(t *testing.T) {
 		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
-		if got := Constructor(tt.args.capacity); !reflect.DeepEqual(got, tt.want) {
+		if got := ___Constructor(tt.args.capacity); !reflect.DeepEqual(got, tt.want) {
 			t.Errorf("%q. Constructor() = %v, want %v", tt.name, got, tt.want)
 		}
 	}
