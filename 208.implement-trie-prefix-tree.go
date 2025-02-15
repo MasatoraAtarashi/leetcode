@@ -10,7 +10,7 @@ type Trie struct {
 	IsEndOfWord bool
 }
 
-func Constructor() Trie {
+func _____Constructor() Trie {
 	return Trie{
 		Children:    make(map[string]*Trie),
 		IsEndOfWord: true,
