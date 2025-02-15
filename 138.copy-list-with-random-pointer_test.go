@@ -7,12 +7,12 @@ import (
 
 func Test_copyRandomList(t *testing.T) {
 	type args struct {
-		head *Node
+		head *LinkedListNode
 	}
 	tests := []struct {
 		name string
 		args args
-		want *Node
+		want *LinkedListNode
 	}{
 		// TODO: Add test cases.
 	}

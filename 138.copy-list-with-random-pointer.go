@@ -1,11 +1,11 @@
 package main
 
-func copyRandomList(head *Node) *Node {
+func copyRandomList(head *LinkedListNode) *LinkedListNode {
 	// step1 ノードをコピーしてマッピング
-	nodeMap := make(map[*Node]*Node, 0)
+	nodeMap := make(map[*LinkedListNode]*LinkedListNode, 0)
 	old := head
 	for old != nil {
-		nodeMap[old] = &Node{
+		nodeMap[old] = &LinkedListNode{
 			Val: old.Val,
 		}
 		old = old.Next
@@ -22,8 +22,8 @@ func copyRandomList(head *Node) *Node {
 	return nodeMap[head]
 }
 
-type Node struct {
+type LinkedListNode struct {
 	Val    int
-	Next   *Node
-	Random *Node
+	Next   *LinkedListNode
+	Random *LinkedListNode
 }

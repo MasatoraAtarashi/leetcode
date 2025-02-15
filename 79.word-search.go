@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 const DONE = '#'
 
 func exist(board [][]byte, word string) bool {
