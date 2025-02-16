@@ -50,7 +50,7 @@ func pacificAtlantic(heights [][]int) [][]int {
 		fs("a", row, len(heights)-1, 0)
 	}
 	for col := range len(heights[len(heights)-1]) {
-		fs("a", len(heights[len(heights)-1]), col, 0)
+		fs("a", len(heights[len(heights)-1])-1, col, 0)
 	}
 
 	// for i := range pacific {
