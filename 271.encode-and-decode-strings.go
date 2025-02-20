@@ -25,9 +25,7 @@ func (codec *Codec) Encode(strs []string) string {
 
 // Decodes a single string to a list of strings.
 func (codec *Codec) Decode(strs string) []string {
-	// fmt.Println(strs)
-
-	var decoded []string
+	// まずは文字数把握
 	splited := strings.Split(strs, divider)
 	if len(splited) == 0 {
 		return nil
@@ -37,28 +35,26 @@ func (codec *Codec) Decode(strs string) []string {
 	if err != nil {
 		panic(err)
 	}
-	// fmt.Println(strslen)
 
-	ss := splited[len(splited)-1]
+	slens := make([]int, 0, strslen)
+	var allStrLen int
 	for i := 1; i <= strslen; i++ {
-		// fmt.Println(i)
 		slen, err := strconv.Atoi(splited[i])
 		if err != nil {
 			panic(err)
 		}
+		slens = append(slens, slen)
+		allStrLen += slen
+	}
 
-		if slen == 0 {
-			decoded = append(decoded, "")
-			continue
-		}
-		if ss == "" {
-			decoded = append(decoded, divider)
-		} else {
-			decoded = append(decoded, ss[:slen])
-			ss = ss[slen:]
-		}
-		// fmt.Println("decoded", decoded)
-		// fmt.Println("ss", ss)
+	// ↑を使って文字抽出
+	var decoded []string
+	allString := strs[len(strs)-allStrLen:]
+	// fmt.Println(allString)
+	for _, slen := range slens {
+		fmt.Println("slen", slen)
+		decoded = append(decoded, allString[:slen])
+		allString = allString[slen:]
 	}
 
 	return decoded
