@@ -10,7 +10,7 @@ func rob(nums []int) int {
 	if len(nums) == 2 {
 		return maxint(nums[0], nums[1])
 	}
-	if len(nums) ==  3 {
+	if len(nums) == 3 {
 		return maxint(maxint(nums[0], nums[1]), maxint(nums[1], nums[2]))
 	}
 
