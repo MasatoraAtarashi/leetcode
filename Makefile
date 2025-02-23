@@ -49,4 +49,6 @@ exec: check-credentials
 
 .PHONY: fmt
 fmt: $(GOBIN)/gosimports ## Run goimports
+	find . -print | grep --regex '.*\.go$$' | grep -v '\(_mock\|_easyjson\|template\)\.go' | xargs $(GOBIN)/gosimports -w
 	go fmt ./...
+
