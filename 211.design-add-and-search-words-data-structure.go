@@ -9,7 +9,7 @@ type WordDictionary struct {
 	IsEndOfWord bool
 }
 
-func Constructor() WordDictionary {
+func Constructor211() WordDictionary {
 	return WordDictionary{
 		Children:    make(map[string]*WordDictionary),
 		IsEndOfWord: true,
