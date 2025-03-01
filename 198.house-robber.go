@@ -21,10 +21,3 @@ func _rob(nums []int) int {
 	}
 	return prev
 }
-
-func maxint(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
