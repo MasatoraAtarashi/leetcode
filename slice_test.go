@@ -60,3 +60,101 @@ func TestRemoveIndex(t *testing.T) {
 		t.Errorf("RemoveIndex() with strings = %v, want %v", result, expectedStrSlice)
 	}
 }
+
+func TestSliceContains(t *testing.T) {
+	// int型のテスト
+	t.Run("int type", func(t *testing.T) {
+		tests := []struct {
+			name     string
+			slice    []int
+			value    int
+			expected bool
+		}{
+			{"value exists", []int{1, 2, 3, 4, 5}, 3, true},
+			{"value does not exist", []int{1, 2, 3, 4, 5}, 6, false},
+			{"empty slice", []int{}, 1, false},
+			{"single element slice", []int{42}, 42, true},
+		}
+
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				result := SliceContains(tt.slice, tt.value)
+				if result != tt.expected {
+					t.Errorf("expected %v, got %v", tt.expected, result)
+				}
+			})
+		}
+	})
+
+	// string型のテスト
+	t.Run("string type", func(t *testing.T) {
+		tests := []struct {
+			name     string
+			slice    []string
+			value    string
+			expected bool
+		}{
+			{"value exists", []string{"apple", "banana", "cherry"}, "banana", true},
+			{"value does not exist", []string{"apple", "banana", "cherry"}, "grape", false},
+			{"empty slice", []string{}, "apple", false},
+			{"single element slice", []string{"hello"}, "hello", true},
+		}
+
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				result := SliceContains(tt.slice, tt.value)
+				if result != tt.expected {
+					t.Errorf("expected %v, got %v", tt.expected, result)
+				}
+			})
+		}
+	})
+
+	// float64型のテスト
+	t.Run("float64 type", func(t *testing.T) {
+		tests := []struct {
+			name     string
+			slice    []float64
+			value    float64
+			expected bool
+		}{
+			{"value exists", []float64{1.1, 2.2, 3.3}, 2.2, true},
+			{"value does not exist", []float64{1.1, 2.2, 3.3}, 4.4, false},
+			{"empty slice", []float64{}, 1.1, false},
+			{"single element slice", []float64{3.14}, 3.14, true},
+		}
+
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				result := SliceContains(tt.slice, tt.value)
+				if result != tt.expected {
+					t.Errorf("expected %v, got %v", tt.expected, result)
+				}
+			})
+		}
+	})
+
+	// bool型のテスト
+	t.Run("bool type", func(t *testing.T) {
+		tests := []struct {
+			name     string
+			slice    []bool
+			value    bool
+			expected bool
+		}{
+			{"value exists", []bool{true, false}, true, true},
+			{"value does not exist", []bool{true, true}, false, false},
+			{"empty slice", []bool{}, true, false},
+			{"single element slice", []bool{false}, false, true},
+		}
+
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				result := SliceContains(tt.slice, tt.value)
+				if result != tt.expected {
+					t.Errorf("expected %v, got %v", tt.expected, result)
+				}
+			})
+		}
+	})
+}
