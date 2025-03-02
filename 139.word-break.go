@@ -9,7 +9,7 @@ func wordBreak(s string, wordDict []string) bool {
 		// fmt.Println("i", i)
 		// fmt.Println("check", string(s[:i+1]))
 		// fmt.Println("breakable", breakable)
-		for j := 0; j < i; j++ {
+		for j := 0; j <= i; j++ {
 			// fmt.Println("j", j)
 			// fmt.Println("前半", string(s[:j]))
 			// fmt.Println("後半", string(s[j:i+1]))

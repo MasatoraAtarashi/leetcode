@@ -27,6 +27,11 @@ func Test_wordBreak(t *testing.T) {
 			args: args{"catsandog", []string{"cats", "dog", "sand", "and", "cat"}},
 			want: false,
 		},
+		{
+			name: "Single character word",
+			args: args{"a", []string{"a"}},
+			want: true,
+		},
 	}
 	for _, tt := range tests {
 		if got := wordBreak(tt.args.s, tt.args.wordDict); got != tt.want {
