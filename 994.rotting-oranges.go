@@ -33,8 +33,7 @@ func orangesRotting(grid [][]int) int {
 	}
 
 	var time int
-	var rottaize func(i, j int)
-	rottaize = func(i, j int) {
+	rottaize := func(i, j int) {
 		if i < 0 || i >= len(grid) || j < 0 || j >= len(grid[i]) {
 			return
 		}
